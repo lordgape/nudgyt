@@ -5,24 +5,23 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
-import { Repository } from 'typeorm';
-import { User } from '../entities/user.entity';
+
+import { UsersRepository } from '../users.repository';
 
 @ValidatorConstraint({ name: 'UserExists', async: true })
 @Injectable()
 export class UserExistsRule implements ValidatorConstraintInterface {
   constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(UsersRepository) private usersRepository: UsersRepository,
   ) {}
 
   async validate(email: string) {
-        
-    const user = await this.usersRepository.findOneBy({ email });
+    const user = await this.usersRepository.findOne({ email });
 
-    return user ? false : true
+    return user ? false : true;
   }
 
   defaultMessage(args: ValidationArguments) {
-    return `email already exist`;
+    return `email ${args.value} already exist`;
   }
 }

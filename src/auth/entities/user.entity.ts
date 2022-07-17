@@ -1,13 +1,5 @@
-import { classToPlain, Exclude, instanceToPlain } from 'class-transformer';
-import {
-  ObjectIdColumn,
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  PrimaryGeneratedColumn,
-  Entity,
-  Unique,
-} from 'typeorm';
+import { classToPlain, Exclude } from 'class-transformer';
+import { ObjectIdColumn, Column, CreateDateColumn, Entity } from 'typeorm';
 
 @Entity()
 export class User {
@@ -32,13 +24,11 @@ export class User {
   createdAt: string;
 
   toJSON() {
-    let ObjectId =  this.id;
+    const ObjectId = this.id;
 
-   return {
-     id:ObjectId,
-     ...instanceToPlain(this)
-     
-   }
-    
+    return {
+      id: ObjectId,
+      ...classToPlain(this),
+    };
   }
 }
