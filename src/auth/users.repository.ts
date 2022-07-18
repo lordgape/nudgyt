@@ -9,9 +9,9 @@ export class UsersRepository extends Repository<User> {
   async createUser(authenticateDto: AuthenticateDto): Promise<User> {
     const { firstname, lastname, password, email } = authenticateDto;
 
-    const salt = await bcrypt.genSalt();
+    const salt: string = await bcrypt.genSalt();
 
-    const hash = await bcrypt.hash(password, salt);
+    const hash: string = await bcrypt.hash(password, salt);
 
     const userObject = { firstname, lastname, password: hash, email };
 
@@ -20,7 +20,7 @@ export class UsersRepository extends Repository<User> {
     return this.save(user);
   }
 
-  async findOneUser(userDto: UserDto) {
+  async findOneUser(userDto: UserDto): Promise<User> {
     return this.findOne({ ...userDto });
   }
 }

@@ -13,7 +13,7 @@ export class AuthController {
 
   @Post('/login')
   @HttpCode(200)
-  login(@Body() loginDto: LoginDto) {
+  login(@Body() loginDto: LoginDto): Promise<{ accessToken: string }> {
     return this.authService.login(loginDto);
   }
 
