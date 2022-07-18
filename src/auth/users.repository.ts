@@ -2,6 +2,7 @@ import { EntityRepository, Repository } from 'typeorm';
 import { AuthenticateDto } from './dtos/authenticate.dto';
 import { User } from './entities/user.entity';
 import * as bcrypt from 'bcrypt';
+import { UserDto } from './dtos/user.dto';
 
 @EntityRepository(User)
 export class UsersRepository extends Repository<User> {
@@ -17,5 +18,9 @@ export class UsersRepository extends Repository<User> {
     const user: User = this.create(userObject);
 
     return this.save(user);
+  }
+
+  async findOneUser(userDto: UserDto) {
+    return this.findOne({ ...userDto });
   }
 }
