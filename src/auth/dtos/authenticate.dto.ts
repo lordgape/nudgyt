@@ -5,7 +5,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { UserAlreadyExists } from 'src/auth/decorators/user-exist.decorator';
+import { UserAlreadyExists } from '../../auth/decorators/user-exist.decorator';
 
 export class AuthenticateDto {
   @IsNotEmpty()
@@ -21,6 +21,7 @@ export class AuthenticateDto {
   password: string;
 
   @IsNotEmpty()
+  @IsEmail()
   @UserAlreadyExists()
   email: string;
 }
