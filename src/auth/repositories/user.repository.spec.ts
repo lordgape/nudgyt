@@ -1,18 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Repository } from 'typeorm';
-import {
-  getUserInstance,
-  getUserObject,
-} from '../../../test/data/mock.user.data';
+import { getUserInstance } from '../../../test/data/mock.user.data';
 import { UsersRepository } from './users.repository';
-
-const mockUserRepository = () => ({
-  create: jest.fn(),
-  save: jest.fn(),
-});
-const mockJwtService = () => ({
-  sign: jest.fn(),
-});
 
 describe('UsersRepository', () => {
   let usersRepository: UsersRepository;
