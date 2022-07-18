@@ -1,6 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { classToPlain } from 'class-transformer';
 import { AuthenticateDto } from './dtos/authenticate.dto';
 import { LoginDto } from './dtos/login.dto';
 import { User } from './entities/user.entity';
@@ -15,10 +14,6 @@ export class AuthService {
     @InjectRepository(UsersRepository) private usersRepository: UsersRepository,
     private jwtService: JwtService,
   ) {}
-
-  getUsers() {
-    return 'Getting users....';
-  }
 
   async register(authenticateDto: AuthenticateDto): Promise<User> {
     return this.usersRepository.createUser(authenticateDto);
@@ -50,5 +45,9 @@ export class AuthService {
     const accessToken: string = await this.jwtService.sign(payload);
 
     return { accessToken };
+  }
+
+  async getUsers(): Promise<User[]> {
+    return this.usersRepository.findAllUsers();
   }
 }
