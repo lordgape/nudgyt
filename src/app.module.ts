@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import config from 'ormconfig';
 
+/* istanbul ignore file */
 @Module({
   imports: [AuthModule, TypeOrmModule.forRoot(config)],
   controllers: [AppController],

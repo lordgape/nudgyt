@@ -7,6 +7,7 @@ import {
 } from 'class-validator';
 import { UserAlreadyExists } from '../../auth/decorators/user-exist.decorator';
 
+/* istanbul ignore file */
 export class AuthenticateDto {
   @IsNotEmpty()
   firstname: string;

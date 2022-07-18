@@ -6,8 +6,9 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-import { UsersRepository } from '../users.repository';
+import { UsersRepository } from '../repositories/users.repository';
 
+/* istanbul ignore file */
 @ValidatorConstraint({ name: 'UserExists', async: true })
 @Injectable()
 export class UserExistsRule implements ValidatorConstraintInterface {

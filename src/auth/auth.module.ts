@@ -7,9 +7,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt-strategy';
-import { UsersRepository } from './users.repository';
+import { UsersRepository } from './repositories/users.repository';
 import { UserExistsRule } from './validators/user-exist-rule.validator';
 
+/* istanbul ignore file */
 @Module({
   imports: [
     TypeOrmModule.forFeature([UsersRepository]),

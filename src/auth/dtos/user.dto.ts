@@ -1,5 +1,6 @@
 import { IsOptional, IsString } from 'class-validator';
 
+/* istanbul ignore file */
 export class UserDto {
   @IsOptional()
   @IsString()

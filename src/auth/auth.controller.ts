@@ -12,6 +12,7 @@ import { AuthenticateDto } from './dtos/authenticate.dto';
 import { LoginDto } from './dtos/login.dto';
 import { User } from './entities/user.entity';
 
+/* istanbul ignore file */
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}

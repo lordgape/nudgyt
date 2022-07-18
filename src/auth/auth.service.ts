@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AuthenticateDto } from './dtos/authenticate.dto';
 import { LoginDto } from './dtos/login.dto';
 import { User } from './entities/user.entity';
-import { UsersRepository } from './users.repository';
+import { UsersRepository } from './repositories/users.repository';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './jwt-payload.interface';
@@ -27,13 +27,13 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new UnauthorizedException(`Please provide a valid credentials `);
+      throw new UnauthorizedException(`Please provide a valid credentials`);
     }
 
     const isMatch: boolean = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      throw new UnauthorizedException(`Please provide a valid credentials `);
+      throw new UnauthorizedException(`Please provide a valid credentials`);
     }
 
     const payload: JwtPayload = {

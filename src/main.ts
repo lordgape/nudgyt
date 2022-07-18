@@ -4,6 +4,7 @@ import { useContainer } from 'class-validator';
 
 import { AppModule } from './app.module';
 
+/* istanbul ignore file */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());

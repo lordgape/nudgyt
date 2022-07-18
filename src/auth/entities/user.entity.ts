@@ -1,6 +1,7 @@
 import { classToPlain, Exclude } from 'class-transformer';
 import { ObjectIdColumn, Column, CreateDateColumn, Entity } from 'typeorm';
 
+/* istanbul ignore file */
 @Entity()
 export class User {
   @ObjectIdColumn()
