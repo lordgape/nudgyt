@@ -28,6 +28,11 @@ $ npm run start:dev
 $ npm run test
 ```
 
+```bash
+# test coverage
+$ npm run test:cov
+```
+
 
 
 ## Stay in touch
