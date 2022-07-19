@@ -2,6 +2,7 @@
 # Description
 
 [Nudgyt](https://github.com/lordgape/nudgyt) Authentication System using Nest.js and GraphQL.
+- Has both REST API and GraphQL
 
 ![Tests](https://github.com/lordgape/nudgyt/actions/workflows/ci.yml/badge.svg)
 
