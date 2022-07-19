@@ -9,7 +9,13 @@ import * as compression from 'compression';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.use(helmet());
+  app.use(
+    helmet({
+      crossOriginEmbedderPolicy: false,
+      contentSecurityPolicy: false,
+    }),
+  );
+
   app.use(compression());
   app.useGlobalPipes(new ValidationPipe());
 

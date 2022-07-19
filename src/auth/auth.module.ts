@@ -8,6 +8,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt-strategy';
 import { UsersRepository } from './repositories/users.repository';
+import { UserQueryResolver } from './resolvers/query/user.resolver';
 import { UserExistsRule } from './validators/user-exist-rule.validator';
 
 /* istanbul ignore file */
@@ -28,7 +29,7 @@ import { UserExistsRule } from './validators/user-exist-rule.validator';
     ConfigModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserExistsRule, JwtStrategy],
+  providers: [AuthService, UserExistsRule, JwtStrategy, UserQueryResolver],
   exports: [UserExistsRule, JwtStrategy, PassportModule],
 })
 export class AuthModule {}
