@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
-import { AuthenticateDto } from './dtos/authenticate.dto';
+import { CreateUserDto } from './dtos/createUser.dto';
 import { LoginDto } from './dtos/login.dto';
 import { User } from './entities/user.entity';
 
@@ -17,7 +17,7 @@ import { User } from './entities/user.entity';
 export class AuthController {
   constructor(private authService: AuthService) {}
   @Post('/register')
-  register(@Body() authenticateDto: AuthenticateDto) {
+  register(@Body() authenticateDto: CreateUserDto) {
     return this.authService.register(authenticateDto);
   }
 

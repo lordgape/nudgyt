@@ -8,6 +8,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt-strategy';
 import { UsersRepository } from './repositories/users.repository';
+import { UserMutationResolver } from './resolvers/mutation/user.resolver';
 import { UserQueryResolver } from './resolvers/query/user.resolver';
 import { UserExistsRule } from './validators/user-exist-rule.validator';
 
@@ -29,7 +30,13 @@ import { UserExistsRule } from './validators/user-exist-rule.validator';
     ConfigModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserExistsRule, JwtStrategy, UserQueryResolver],
+  providers: [
+    AuthService,
+    UserExistsRule,
+    JwtStrategy,
+    UserQueryResolver,
+    UserMutationResolver,
+  ],
   exports: [UserExistsRule, JwtStrategy, PassportModule],
 })
 export class AuthModule {}

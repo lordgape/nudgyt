@@ -1,3 +1,4 @@
+import { Field, InputType } from '@nestjs/graphql';
 import {
   IsEmail,
   IsNotEmpty,
@@ -5,15 +6,20 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { UserAlreadyExists } from '../../auth/decorators/user-exist.decorator';
+import { UserAlreadyExists } from '../decorators/user-exist.decorator';
 
 /* istanbul ignore file */
-export class AuthenticateDto {
+@InputType()
+export class CreateUserDto {
   @IsNotEmpty()
+  @Field()
   firstname: string;
+
   @IsNotEmpty()
+  @Field()
   lastname: string;
 
+  @Field()
   @MinLength(8)
   @MaxLength(32)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
@@ -21,6 +27,7 @@ export class AuthenticateDto {
   })
   password: string;
 
+  @Field()
   @IsNotEmpty()
   @IsEmail()
   @UserAlreadyExists()
