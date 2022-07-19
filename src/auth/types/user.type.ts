@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
+/* istanbul ignore file */
 @ObjectType('User')
 export class UserType {
   @Field(() => ID)

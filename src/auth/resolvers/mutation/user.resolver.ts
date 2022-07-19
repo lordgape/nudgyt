@@ -5,6 +5,7 @@ import { LoginDto } from 'src/auth/dtos/login.dto';
 import { UserToken } from 'src/auth/types/user-token.type';
 import { UserType } from 'src/auth/types/user.type';
 
+/* istanbul ignore file */
 @Resolver(() => UserType)
 export class UserMutationResolver {
   constructor(private authService: AuthService) {}

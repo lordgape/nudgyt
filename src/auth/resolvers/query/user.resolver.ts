@@ -4,6 +4,7 @@ import { AuthService } from 'src/auth/auth.service';
 import { GraphqlAuthGuard } from 'src/auth/guards/graphql-auth.guard';
 import { UserType } from 'src/auth/types/user.type';
 
+/* istanbul ignore file */
 @Resolver(() => UserType)
 @UseGuards(GraphqlAuthGuard)
 export class UserQueryResolver {
